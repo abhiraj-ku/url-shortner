@@ -1,0 +1,22 @@
+{
+  "name": "url-shortner",
+  "version": "1.0.0",
+  "description": "A simple url shortner which also shows no of clicks on any link",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "url shortner",
+    "short url",
+    "url generator"
+  ],
+  "author": "Abhishek Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.4.2",
+    "nodemon": "^3.0.1",
+    "shortid": "^2.2.16"
+  }
+}
