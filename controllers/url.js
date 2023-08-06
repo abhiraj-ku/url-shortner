@@ -8,12 +8,12 @@ async function handleGenerateNewShortUrl(req, res) {
   await URL.create({
     shortId: shortId,
     redirectUrl: body.url,
-    vistedHistory: [],
+    visitHistory: [],
   });
   return res.json({ id: shortId, OriginalURL: body.url });
 }
 
-async function handleGetRedirectUrl(req, res) {
+async function handleGetUser(req, res) {
   const shortId = req.params.shortId;
   const entry = await URL.findOneAndUpdate(
     {
@@ -29,8 +29,7 @@ async function handleGetRedirectUrl(req, res) {
   );
   res.redirect(entry.redirectUrl);
 }
-
 module.exports = {
   handleGenerateNewShortUrl,
-  handleGetRedirectUrl,
+  handleGetUser,
 };
