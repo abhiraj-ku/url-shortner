@@ -10,9 +10,27 @@ async function handleGenerateNewShortUrl(req, res) {
     redirectUrl: body.url,
     vistedHistory: [],
   });
-  return res.json({ id: shortId });
+  return res.json({ id: shortId, OriginalURL: body.url });
+}
+
+async function handleGetRedirectUrl(req, res) {
+  const shortId = req.params.shortId;
+  const entry = await URL.findOneAndUpdate(
+    {
+      shortId,
+    },
+    {
+      $push: {
+        visitHistory: {
+          timestamps: Date.now(),
+        },
+      },
+    }
+  );
+  res.redirect(entry.redirectUrl);
 }
 
 module.exports = {
   handleGenerateNewShortUrl,
+  handleGetRedirectUrl,
 };
